@@ -2,57 +2,42 @@
 
 function changeLanguage() {
     // Add logic to change language (e.g., toggle between English and Kannada)
-    alert('Language changed!');
+   
+    document.location="kannadaindex.html";
 }
+document.addEventListener('DOMContentLoaded', function () {
+  const navbarToggle = document.getElementById('navbar-toggle');
+  const navUl = document.querySelector('nav ul');
 
-(function($) { 
-    $(function() { 
-  
-      //  open and close nav 
-      $('#navbar-toggle').click(function() {
-        $('nav ul').slideToggle();
+  navbarToggle.addEventListener('click', function() {
+    navUl.classList.toggle('active');
+    this.classList.toggle('active');
+  });
+
+ 
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('nav ul li a:not(:only-child)').forEach(function (link) {
+    link.addEventListener('click', function(e) {
+      var dropdown = this.nextElementSibling;
+      dropdown.style.display = (dropdown.style.display === 'block') ? 'none' : 'block';
+
+      document.querySelectorAll('.nav-dropdown').forEach(function(item) {
+        if (item !== dropdown) {
+          item.style.display = 'none';
+        }
       });
-  
-  
-      // Hamburger toggle
-      $('#navbar-toggle').on('click', function() {
-        this.classList.toggle('active');
-      });
-  
-  
-      // If a link has a dropdown, add sub menu toggle.
-      $('nav ul li a:not(:only-child)').click(function(e) {
-        $(this).siblings('.navbar-dropdown').slideToggle("slow");
-  
-        // Close dropdown when select another dropdown
-        $('.navbar-dropdown').not($(this).siblings()).hide("slow");
-        e.stopPropagation();
-      });
-  
-  
-      // Click outside the dropdown will remove the dropdown class
-      $('html').click(function() {
-        $('.navbar-dropdown').hide();
-      });
-    }); 
-  })(jQuery); 
+
+      e.stopPropagation();
+    });
+  });
+
+  document.addEventListener('click', function() {
+    document.querySelectorAll('.nav-dropdown').forEach(function(item) {
+      item.style.display = 'none';
+    });
+  });
+});
 
 
-  // SLIDER SECTION
-
-  let count =1;
-document.getElementById("radio1").checked = true;
-
-setInterval(function(){
-    nextImage();
-},3000
-
-)
-
-function nextImage(){
-    count++;
-    if (count>7) {
-       count = 1;
-    }
-    document.getElementById("radio"+count).checked = true;
-}
