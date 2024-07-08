@@ -5,6 +5,11 @@ function changeLanguage() {
    
     document.location="kannadaindex.html";
 }
+function changeLanguagetoEng() {
+    // Add logic to change language (e.g., toggle between English and Kannada)
+   
+    document.location="index.html";
+}
 document.addEventListener('DOMContentLoaded', function () {
   const navbarToggle = document.getElementById('navbar-toggle');
   const navUl = document.querySelector('nav ul');
